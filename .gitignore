@@ -1,0 +1,13 @@
+*.dll
+*.exe
+*.lib
+*.a
+*.so
+*.o
+*.vcxproj.user
+
+packages/
+Debug/
+Release/
+**/.vs/
+Build/

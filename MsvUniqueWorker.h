@@ -69,7 +69,7 @@ public:
 	/**************************************************************************************************//**
 	* @brief			Constructor.
 	* @details		Constructs @ref MsvUniqueWorker with shared condition variable.
-	* @param[in]	spConditionVariable	Shared condition variable.
+	* @param[in]	spConditionVariable				Shared condition variable.
 	* @param[in]	spConditionVariableMutex		Shared condition variable mutex.
 	* @param[in]	spConditionVariablePredicate	Shared condition variable predicate.
 	* @param[in]	spFactory							Shared pointer to dependency injection factory.

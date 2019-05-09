@@ -6,7 +6,11 @@
 
 #include "..\IMsvTask.h"
 
+MSV_DISABLE_ALL_WARNINGS
+
 #include <gmock\gmock.h>
+
+MSV_ENABLE_WARNINGS
 
 
 class MsvTask_Mock:

@@ -39,7 +39,6 @@ along with Foobar. If not, see <https://www.gnu.org/licenses/>.
 
 #include "merror/MsvError.h"
 
-#include "merror/MsvCompiler.h"
 MSV_DISABLE_ALL_WARNINGS
 
 #include <memory>

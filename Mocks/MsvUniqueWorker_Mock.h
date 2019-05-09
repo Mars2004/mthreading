@@ -7,7 +7,11 @@
 #include "..\IMsvUniqueWorker.h"
 #include "MsvThread_Mock.h"
 
+MSV_DISABLE_ALL_WARNINGS
+
 #include <gmock\gmock.h>
+
+MSV_ENABLE_WARNINGS
 
 
 class MsvUniqueWorker_Mock:

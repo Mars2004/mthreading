@@ -6,7 +6,11 @@
 
 #include "..\IMsvThreadPool.h"
 
+MSV_DISABLE_ALL_WARNINGS
+
 #include <gmock\gmock.h>
+
+MSV_ENABLE_WARNINGS
 
 
 class MsvThreadPool_Mock:

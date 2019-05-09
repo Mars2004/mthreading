@@ -66,11 +66,11 @@ public:
 };
 
 
-class MsvThreadTests:
+class MsvThreadTests_Integration:
 	public::testing::Test
 {
 public:
-	MsvThreadTests()
+	MsvThreadTests_Integration()
 	{
 
 	}
@@ -84,7 +84,6 @@ public:
 
 	virtual void TearDown()
 	{
-		//clean all loggers before delete test log files
 		m_spThread.reset();
 	}
 
@@ -92,7 +91,7 @@ public:
 	std::shared_ptr<TestMsvThreadObject> m_spThread;
 };
 
-TEST_F(MsvThreadTests, ItShouldNotBeRunningAfterCreate)
+TEST_F(MsvThreadTests_Integration, ItShouldNotBeRunningAfterCreate)
 {
 	EXPECT_FALSE(m_spThread->IsRunning());
 	EXPECT_EQ(m_spThread->m_HandleCaughtExceptionCalls, 0);
@@ -103,45 +102,45 @@ TEST_F(MsvThreadTests, ItShouldNotBeRunningAfterCreate)
 
 //this is possible dangerous test -> it deletes previous thread while it is still running
 //good example what happens if you call StartThread several times
-/*TEST_F(MsvThreadTests, ItShouldFailedWhenTriesToStartAlreadyStartedThread)
+/*TEST_F(MsvThreadTests_Integration, ItShouldFailedWhenTriesToStartAlreadyStartedThread)
 {
 	EXPECT_FALSE(MSV_FAILED(m_spThread->StartThread(0)));
 	EXPECT_EQ(m_spThread->StartThread(0), MSV_ALREADY_RUNNING_INFO);
 }*/
 
-TEST_F(MsvThreadTests, ItShouldReturnInfoWhenTriesToStopStoppedThread)
+TEST_F(MsvThreadTests_Integration, ItShouldReturnInfoWhenTriesToStopStoppedThread)
 {
 	EXPECT_EQ(m_spThread->StopThread(), MSV_NOT_RUNNING_INFO);
 	EXPECT_FALSE(m_spThread->IsRunning());
 }
 
-TEST_F(MsvThreadTests, ItShouldReturnInfoWhenTriesToStopThreadTwice)
+TEST_F(MsvThreadTests_Integration, ItShouldReturnInfoWhenTriesToStopThreadTwice)
 {
 	EXPECT_FALSE(MSV_FAILED(m_spThread->StartThread(0)));
 	EXPECT_FALSE(MSV_FAILED(m_spThread->StopThread()));
 	EXPECT_EQ(m_spThread->StopThread(), MSV_ALREADY_REQUESTED_INFO);
 }
 
-TEST_F(MsvThreadTests, ItShouldReturnInfoWhenTriesToWaitOntoStoppedThread)
+TEST_F(MsvThreadTests_Integration, ItShouldReturnInfoWhenTriesToWaitOntoStoppedThread)
 {
 	EXPECT_EQ(m_spThread->WaitForThreadStop(3000000), MSV_NOT_RUNNING_INFO);
 	EXPECT_FALSE(m_spThread->IsRunning());
 }
 
-TEST_F(MsvThreadTests, ItShouldReturnInfoWhenTriesToStopAndWaitForStoppedThread)
+TEST_F(MsvThreadTests_Integration, ItShouldReturnInfoWhenTriesToStopAndWaitForStoppedThread)
 {
 	EXPECT_EQ(m_spThread->StopAndWaitForThreadStop(3000000), MSV_NOT_RUNNING_INFO);
 	EXPECT_FALSE(m_spThread->IsRunning());
 }
 
-TEST_F(MsvThreadTests, ItShouldReturnInfoWhenTriesAndWaitForToStopThreadTwice)
+TEST_F(MsvThreadTests_Integration, ItShouldReturnInfoWhenTriesAndWaitForToStopThreadTwice)
 {
 	EXPECT_FALSE(MSV_FAILED(m_spThread->StartThread(0)));
 	EXPECT_FALSE(MSV_FAILED(m_spThread->StopAndWaitForThreadStop(3000000)));
 	EXPECT_EQ(m_spThread->StopAndWaitForThreadStop(0), MSV_NOT_RUNNING_INFO);
 }
 
-TEST_F(MsvThreadTests, ItShouldRunOnlyOnceWhenNegativeTimeoutIsSet)
+TEST_F(MsvThreadTests_Integration, ItShouldRunOnlyOnceWhenNegativeTimeoutIsSet)
 {
 	m_spThread->StartThread(-1);
 	//wait for thread stop (stop request is set in StartThread because of negative timeout)
@@ -154,7 +153,7 @@ TEST_F(MsvThreadTests, ItShouldRunOnlyOnceWhenNegativeTimeoutIsSet)
 	EXPECT_EQ(m_spThread->m_ThreadMainCalls, 1);
 }
 
-TEST_F(MsvThreadTests, ItShouldCallHandleCaughtExceptionWhenExceptionIsCaught)
+TEST_F(MsvThreadTests_Integration, ItShouldCallHandleCaughtExceptionWhenExceptionIsCaught)
 {
 	m_spThread->m_throwException = true;
 	m_spThread->StartThread(-1);
@@ -170,7 +169,7 @@ TEST_F(MsvThreadTests, ItShouldCallHandleCaughtExceptionWhenExceptionIsCaught)
 	EXPECT_EQ(m_spThread->m_ThreadMainCalls, 0);
 }
 
-TEST_F(MsvThreadTests, ItShouldWaitForNotifyAndExecuteMaindWhenZeroTimeoutIsSet)
+TEST_F(MsvThreadTests_Integration, ItShouldWaitForNotifyAndExecuteMaindWhenZeroTimeoutIsSet)
 {
 	m_spThread->StartThread(0);
 	std::this_thread::sleep_for(std::chrono::microseconds(1000));
@@ -188,7 +187,7 @@ TEST_F(MsvThreadTests, ItShouldWaitForNotifyAndExecuteMaindWhenZeroTimeoutIsSet)
 	EXPECT_EQ(m_spThread->m_ThreadMainCalls, 2);
 }
 
-TEST_F(MsvThreadTests, ItShouldExecuteInLoopWhenPositiveTimeoutIsSet)
+TEST_F(MsvThreadTests_Integration, ItShouldExecuteInLoopWhenPositiveTimeoutIsSet)
 {
 	m_spThread->StartThread(100);
 	std::this_thread::sleep_for(std::chrono::microseconds(3000));
@@ -203,7 +202,7 @@ TEST_F(MsvThreadTests, ItShouldExecuteInLoopWhenPositiveTimeoutIsSet)
 	EXPECT_GT(m_spThread->m_ThreadMainCalls, 1);
 }
 
-TEST_F(MsvThreadTests, ItShouldFailedWhenSharedConditionIsNull)
+TEST_F(MsvThreadTests_Integration, ItShouldFailedWhenSharedConditionIsNull)
 {
 	m_spThread->SetSharedConditionVariable(nullptr);
 	EXPECT_EQ(m_spThread->StartThread(-1), MSV_ALLOCATION_ERROR);

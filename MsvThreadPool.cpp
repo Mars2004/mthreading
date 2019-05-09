@@ -54,7 +54,8 @@ MsvThreadPool::MsvThreadPool(std::shared_ptr<MsvThreadPool_Factory> spFactory):
 
 MsvThreadPool::~MsvThreadPool()
 {
-
+	//it is called with default timeout (30s)
+	StopAndWaitForThreadPoolStop();
 }
 
 

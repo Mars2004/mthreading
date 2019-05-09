@@ -96,7 +96,7 @@ public:
 	/**************************************************************************************************//**
 	* @copydoc IMsvThreadPool::StartThreadPool(uint16_t threadCount)
 	******************************************************************************************************/
-	virtual MsvErrorCode StartThreadPool(uint16_t threadCount) override;
+	virtual MsvErrorCode StartThreadPool(uint16_t threadCount = 4) override;
 
 	/**************************************************************************************************//**
 	* @copydoc IMsvThreadPool::StopThreadPool()
@@ -106,12 +106,12 @@ public:
 	/**************************************************************************************************//**
 	* @copydoc IMsvThreadPool::StopAndWaitForThreadPoolStop(int32_t timeout)
 	******************************************************************************************************/
-	virtual MsvErrorCode StopAndWaitForThreadPoolStop(int32_t timeout) override;
+	virtual MsvErrorCode StopAndWaitForThreadPoolStop(int32_t timeout = 30000000) override;
 
 	/**************************************************************************************************//**
 	* @copydoc IMsvThreadPool::WaitForThreadPoolStop(int32_t timeout)
 	******************************************************************************************************/
-	virtual MsvErrorCode WaitForThreadPoolStop(int32_t timeout) override;
+	virtual MsvErrorCode WaitForThreadPoolStop(int32_t timeout = 30000000) override;
 
 protected:
 	/**************************************************************************************************//**

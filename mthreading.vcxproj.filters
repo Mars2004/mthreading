@@ -51,6 +51,12 @@
     <ClInclude Include="MsvTask.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="IMsvEvent.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="MsvEvent.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="MsvThread.cpp">
@@ -66,6 +72,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="MsvTask.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="MsvEvent.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

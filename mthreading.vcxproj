@@ -72,6 +72,22 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <IncludePath>$(ProjectDir)\..;$(IncludePath)</IncludePath>
     <OutDir>$(SolutionDir)\Build\$(Configuration)\</OutDir>
+    <IntDir>$(SolutionDir)\Build\Intermediate\$(Configuration)\$(ProjectName)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <OutDir>$(SolutionDir)\Build\$(Configuration)\</OutDir>
+    <IntDir>$(SolutionDir)\Build\Intermediate\$(Configuration)\$(ProjectName)\</IntDir>
+    <IncludePath>$(ProjectDir)\..;$(IncludePath)</IncludePath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <OutDir>$(SolutionDir)\Build\$(Configuration)\</OutDir>
+    <IntDir>$(SolutionDir)\Build\Intermediate\$(Configuration)\$(ProjectName)\</IntDir>
+    <IncludePath>$(ProjectDir)\..;$(IncludePath)</IncludePath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <OutDir>$(SolutionDir)\Build\$(Configuration)\</OutDir>
+    <IntDir>$(SolutionDir)\Build\Intermediate\$(Configuration)\$(ProjectName)\</IntDir>
+    <IncludePath>$(ProjectDir)\..;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -118,11 +134,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="IMsvEvent.h" />
     <ClInclude Include="IMsvThread.h" />
     <ClInclude Include="IMsvThreadPool.h" />
     <ClInclude Include="IMsvUniqueWorker.h" />
     <ClInclude Include="IMsvTask.h" />
     <ClInclude Include="IMsvWorker.h" />
+    <ClInclude Include="MsvEvent.h" />
     <ClInclude Include="MsvThread.h" />
     <ClInclude Include="MsvThreadPool.h" />
     <ClInclude Include="MsvThreadPool_Factory.h" />
@@ -132,6 +150,7 @@
     <ClInclude Include="MsvTask.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="MsvEvent.cpp" />
     <ClCompile Include="MsvThread.cpp" />
     <ClCompile Include="MsvThreadPool.cpp" />
     <ClCompile Include="MsvUniqueWorker.cpp" />

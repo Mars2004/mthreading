@@ -75,7 +75,7 @@ public:
 	*								worker thread.
 	* @returns		MsvErrorCode
 	* @retval		MsvAllocationError	When create @ref IMsvTask failed.
-	* @retval		MsvSuccess				On success.
+	* @retval		MSV_SUCCESS				On success.
 	******************************************************************************************************/
 	virtual MsvErrorCode AddTask(std::function<void()>& task) = 0;
 
@@ -87,7 +87,7 @@ public:
 	* @param[in]	pContext	Context. It will be set as task parameter.
 	* @returns		MsvErrorCode
 	* @retval		MsvAllocationError	When create @ref IMsvTask failed.
-	* @retval		MsvSuccess				On success.
+	* @retval		MSV_SUCCESS				On success.
 	******************************************************************************************************/
 	virtual MsvErrorCode AddTask(std::function<void(void*)>& task, void* pContext) = 0;
 
@@ -107,7 +107,7 @@ public:
 	* @returns		MsvErrorCode
 	* @retval		MSV_ALLOCATION_ERROR			On failed.
 	* @retval		MSV_ALREADY_RUNNING_INFO	When thread pool is already running (interpreted as success too).
-	* @retval		MsvSuccess						On success.
+	* @retval		MSV_SUCCESS						On success.
 	******************************************************************************************************/
 	virtual MsvErrorCode StartThreadPool(uint16_t threadCount = 4) = 0;
 
@@ -117,7 +117,7 @@ public:
 	* @returns		MsvErrorCode
 	* @retval		MSV_NOT_RUNNING_INFO			When thread pool is not running (interpreted as success too).
 	* @retval		MSV_ALREADY_REQUESTED_INFO	When stop request has been already called (interpreted as success too).
-	* @retval		MsvSuccess						On success.
+	* @retval		MSV_SUCCESS						On success.
 	******************************************************************************************************/
 	virtual MsvErrorCode StopThreadPool() = 0;
 
@@ -130,7 +130,7 @@ public:
 	* @retval		MSV_NOT_RUNNING_INFO			When thread is not running (interpreted as success too).
 	* @retval		MSV_ALREADY_REQUESTED_INFO	When stop request has been already called (interpreted as success too).
 	* @retval		MSV_STILL_RUNNING_WARN		When timeouted - thread pool is still running (interpreted as failed).
-	* @retval		MsvSuccess						On success.
+	* @retval		MSV_SUCCESS						On success.
 	* @see			StopThreadPool
 	* @see			WaitForThreadPoolStop
 	******************************************************************************************************/
@@ -144,7 +144,7 @@ public:
 	* @returns		MsvErrorCode
 	* @retval		MSV_NOT_RUNNING_INFO			When thread pool is not running (interpreted as success too).
 	* @retval		MSV_STILL_RUNNING_WARN		When timeouted - thread pool is still running (interpreted as failed).
-	* @retval		MsvSuccess						On success.
+	* @retval		MSV_SUCCESS						On success.
 	* @see			StopThread
 	******************************************************************************************************/
 	virtual MsvErrorCode WaitForThreadPoolStop(int32_t timeout = 30000000) = 0;

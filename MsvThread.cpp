@@ -208,8 +208,11 @@ MsvErrorCode MsvThread::WaitForThreadStop(int32_t timeout)
 
 void MsvThread::HandleCaughtException(const std::exception_ptr pException)
 {
-	//implement in child class if needed
-	(void) pException;
+	//just rethrows (implement exception handling in child class if needed)
+	if (pException)
+	{
+		std::rethrow_exception(pException);
+	}
 
 	//example how to get std:exception from pException:	
 	/*

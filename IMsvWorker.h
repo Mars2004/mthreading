@@ -75,7 +75,7 @@ public:
 	* @param[in]	task		Function. It will be assigned to queue and executed.
 	* @returns		MsvErrorCode
 	* @retval		MsvAllocationError	When create @ref IMsvTask failed.
-	* @retval		MsvSuccess				On success.
+	* @retval		MSV_SUCCESS				On success.
 	******************************************************************************************************/
 	virtual MsvErrorCode AddTask(std::function<void()>& task) = 0;
 
@@ -86,7 +86,7 @@ public:
 	* @param[in]	pContext	Context. It will be set as task parameter.
 	* @returns		MsvErrorCode
 	* @retval		MsvAllocationError	When create @ref IMsvTask failed.
-	* @retval		MsvSuccess				On success.
+	* @retval		MSV_SUCCESS				On success.
 	******************************************************************************************************/
 	virtual MsvErrorCode AddTask(std::function<void(void*)>& task, void* pContext) = 0;
 };

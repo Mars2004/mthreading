@@ -155,11 +155,27 @@ protected:
 	* @brief		Shared condition variable.
 	* @details	It is used for worker thread synchronization (wake ups thread if new task is inserted).
 	* @see		AddTask
+	* @see		m_spSharedConditionMutex
+	* @see		m_spSharedConditionPredicate
 	******************************************************************************************************/
 	std::shared_ptr<std::condition_variable> m_spSharedCondition;
 
+	/**************************************************************************************************//**
+	* @brief		Shared condition variable mutex.
+	* @details	Shared mutex for shared condition variable @ref m_spSharedCondition.
+	* @see		AddTask
+	* @see		m_spSharedCondition
+	* @see		m_spSharedConditionPredicate
+	******************************************************************************************************/
 	std::shared_ptr<std::mutex> m_spSharedConditionMutex;
 
+	/**************************************************************************************************//**
+	* @brief		Shared condition variable predicate.
+	* @details	Shared predicate for shared condition variable @ref m_spSharedCondition.
+	* @see		AddTask
+	* @see		m_spSharedCondition
+	* @see		m_spSharedConditionMutex
+	******************************************************************************************************/
 	std::shared_ptr<uint64_t> m_spSharedConditionPredicate;
 
 	/**************************************************************************************************//**

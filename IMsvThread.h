@@ -1,5 +1,8 @@
 /**************************************************************************************************//**
-* @addtogroup	MTHREADING
+* @defgroup		MTHREADING MarsTech Threading
+* @brief			MarsTech Threading
+* @details		Contains implementation and all definitions of MarsTech Threading.
+* @copyright	GNU General Public License (GPLv3).
 * @{
 ******************************************************************************************************/
 
@@ -81,7 +84,7 @@ public:
 	* @returns		MsvErrorCode
 	* @retval		MSV_ALLOCATION_ERROR			On failed.
 	* @retval		MSV_ALREADY_RUNNING_INFO	When thread is already running (interpreted as success too).
-	* @retval		MsvSuccess						On success.
+	* @retval		MSV_SUCCESS						On success.
 	* @warning		Call @ref StartThread only once (at least before @ref StopThread and @ref WaitForThreadStop
 	*					or crash can occure). 
 	******************************************************************************************************/
@@ -93,7 +96,7 @@ public:
 	* @returns		MsvErrorCode
 	* @retval		MSV_NOT_RUNNING_INFO			When thread is not running (interpreted as success too).
 	* @retval		MSV_ALREADY_REQUESTED_INFO	When stop request has been already called (interpreted as success too).
-	* @retval		MsvSuccess						On success.
+	* @retval		MSV_SUCCESS						On success.
 	******************************************************************************************************/
 	virtual MsvErrorCode StopThread() = 0;
 
@@ -106,7 +109,7 @@ public:
 	* @retval		MSV_NOT_RUNNING_INFO			When thread is not running (interpreted as success too).
 	* @retval		MSV_ALREADY_REQUESTED_INFO	When stop request has been already called (interpreted as success too).
 	* @retval		MSV_STILL_RUNNING_WARN		When timeouted - thread is still running (interpreted as failed).
-	* @retval		MsvSuccess						On success.
+	* @retval		MSV_SUCCESS						On success.
 	* @see			StopThread
 	* @see			WaitForThreadStop
 	******************************************************************************************************/
@@ -120,7 +123,7 @@ public:
 	* @returns		MsvErrorCode
 	* @retval		MSV_NOT_RUNNING_INFO			When thread is not running (interpreted as success too).
 	* @retval		MSV_STILL_RUNNING_WARN		When timeouted - thread is still running (interpreted as failed).
-	* @retval		MsvSuccess						On success.
+	* @retval		MSV_SUCCESS						On success.
 	* @see			StopThread
 	******************************************************************************************************/
 	virtual MsvErrorCode WaitForThreadStop(int32_t timeout = 30000000) = 0;

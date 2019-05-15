@@ -119,8 +119,7 @@ protected:
 	* @brief			Handle caught exception.
 	* @details		It is called when some exception is caught (from @ref OnThreadStart, @ref ThreadMain
 	*					or @ref OnThreadStop).
-	* @note			Implement/override if needed in your child object (base implementation does nothing).
-	* @warning		It should not rethrow exception (state of this object can be lost).
+	* @note			Implement/override if needed in your child object (base implementation just rethrows exception).
 	******************************************************************************************************/
 	virtual void HandleCaughtException(const std::exception_ptr pException);
 

@@ -83,7 +83,7 @@ public:
 	virtual ~MsvThread();
 
 	/**************************************************************************************************//**
-	* @copydoc IMsvThread::IsRunning()
+	* @copydoc IMsvThread::IsRunning() const
 	******************************************************************************************************/
 	virtual bool IsRunning() const override;
 
